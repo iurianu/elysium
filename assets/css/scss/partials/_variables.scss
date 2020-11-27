@@ -1,0 +1,138 @@
+@function str-replace($string, $search, $replace: "") {
+	$index: str-index($string, $search);
+
+	@if $index {
+		@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+	}
+
+	@return $string;
+}
+
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+	$src: null;
+
+	$extmods: (
+		eot: "?",
+		svg: "#" + str-replace($name, " ", "_")
+	);
+
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+
+	@each $ext in $exts {
+		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+	}
+
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+	}
+}
+
+@mixin clearfix() {
+	display: block;
+	clear: both;
+  &::before, &::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+
+@mixin font-face-build($name, $weight, $style) {
+  font-family: $name;
+  font-weight: $weight;
+  font-style: $style;
+}
+
+$theme-grey: #505050;
+$theme-light-grey: #787878;
+
+@font-face {
+  font-family: "Aerotis";
+  src: url("fonts/Aerotis.ttf") format("truetype")}
+
+@font-face {
+  @include font-face-build(Lora, 400, normal);
+  src: url("fonts/Lora-Regular.ttf") format("truetype")}
+
+@font-face {
+  @include font-face-build(Lora, 400, italic);
+  src: url("fonts/Lora-Italic.ttf") format("truetype")}
+
+@font-face {
+  @include font-face-build(Lora, 700, italic);
+  src: url("fonts/Lora-BoldItalic.ttf") format("truetype")}
+
+@font-face {
+  @include font-face-build(Lora, 700, normal);
+  src: url("fonts/Lora-Bold.ttf") format("truetype")}
+
+@mixin for-small-phone {
+  @media (max-width: 420px)  { @content; }
+}
+@mixin for-phone-only {
+  @media (max-width: 575px)  { @content; }
+}
+@mixin for-tablet-portrait-down {
+  @media (max-width: 767px)  { @content; }
+}
+@mixin for-tablet-landscape-down {
+  @media (max-width: 991px)  { @content; }
+}
+@mixin for-desktop-down {
+  @media (max-width: 1199px) { @content; }
+}
+@mixin not-for-phones {
+  @media (min-width: 576px)  { @content; }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: 768px)  { @content; }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 992px)  { @content; }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) { @content; }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: 1600px) { @content; }
+}
+
+@mixin background-props {
+	background-size: cover;
+	background-color: transparent;
+	background-position: top center;
+	background-repeat: no-repeat;
+}
+
+.d-flex {
+	flex-wrap: wrap;
+}
+
+.clearfix {
+	display: block;
+	clear: both;
+	width: 100%;
+	height: 0;
+	margin: 0;
+	padding: 0;
+}
+
+.hidden-md {
+    @include for-tablet-landscape-up {
+        display: none !important;
+    }
+}
+
+.visible-md {
+    @include for-tablet-landscape-down {
+        display: none !important;
+    }
+}

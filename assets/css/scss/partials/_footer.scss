@@ -1,0 +1,52 @@
+footer {
+  margin-top: -280px;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  @include background-props;
+  background-image: url("../images/footer.jpg");
+  min-height: 290px;
+    @include for-tablet-landscape-down {
+        background-image: url("../images/Landing-Elysium-mobil.jpg");
+    }
+    @include for-phone-only {
+        min-height: 320px;
+    }
+  .d-flex {
+    align-items: flex-end;
+    ul.footer-nav {
+      list-style: none;
+      display: inline-table;
+        @include for-phone-only {
+            display: inline-block;
+        }
+      li {
+        line-height: 1em;
+        display: table-cell;
+        border-right: 1px solid $theme-light-grey;
+        text-align: left;
+        &:nth-of-type(2) {
+          text-align: center;
+            @include for-phone-only {
+                text-align: left;
+            }
+        }
+        &:last-of-type {
+          padding-left: 3rem;
+          border-right: 0;
+            @include for-phone-only {
+                padding-left: 0;
+            }
+        }
+        a {
+          color: $theme-light-grey;
+        }
+          @include for-phone-only {
+              display: block;
+              font-size: 80%;
+              line-height: 1.5rem;
+              border-right: 0 solid transparent;
+          }
+      }
+    }
+  }
+}

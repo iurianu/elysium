@@ -1,0 +1,302 @@
+%text-defaults {
+  font-family: "Lora", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+%headers {
+  @extend %text-defaults;
+  font-size: 28px;
+  color: $theme-grey;
+}
+
+h1 {
+  @extend %headers;
+}
+
+h2 {
+  font-family: "Aerotis", cursive;
+  font-weight: 400;
+  font-size: 55px;
+  line-height: 0.5em;
+  color: #FFF;
+  padding-bottom: 1em;
+    @include for-tablet-landscape-down {
+        line-height: 2rem;
+    }
+    @include for-tablet-portrait-down {
+        font-size: 45px;
+    }
+    @include for-small-phone {
+        padding-left: 2rem;
+    }
+}
+
+h3 {
+  @extend %headers;
+}
+
+p {
+  @extend %text-defaults;
+  color: $theme-light-grey;
+    @include for-tablet-portrait-down {
+        font-size: 0.7rem;
+    }
+}
+
+.custom-bottom {
+  position: relative;
+  &::after {
+    position: absolute;
+    bottom: 0;
+    content: "";
+    background-image: url('../images/linie.png');
+    background-position: bottom;
+    background-size: cover;
+    height: 1px;
+    width: 80%;
+    left: 10%;
+  }
+}
+
+main {
+  section {
+    @include background-props;
+    padding-top: 150px;
+    padding-bottom: 150px;
+      .container-lg {
+          @include for-phone-only {
+              p {
+                  text-align: left;
+              }
+          }
+      }
+    h2 {
+        margin-left: 2em;
+        &::first-line {
+            text-indent: -2em;
+        }
+    }
+      h3 {
+        @include for-tablet-landscape-down {
+            font-size: 24px;
+        }
+        @include for-tablet-portrait-down {
+            font-size: 22px;
+        }          
+      }
+    p {
+        @include for-tablet-portrait-down {
+            padding-left: 0;
+            padding-right: 15px;
+        }
+    }
+    @include for-tablet-portrait-down {
+          text-align: center;
+    }
+    &#cadru {
+        background-image: url("../images/banner-2.jpg");    
+        figure {
+            &#play-button {
+                a {
+                    display: block;
+                    cursor: pointer;
+                }
+                img {
+                    max-width: 75%;
+                }
+            }
+        }
+        h2 {
+            @include for-small-phone {
+                padding-left: 0;
+            }            
+        }
+        h3 {
+            color: #FFF;
+        }
+        p {
+            color: #FFF;
+        }
+        @include for-tablet-landscape-down {
+            background-image: url("../images/banner2-mobile.png");
+            padding: 350px 15px 20px;
+            text-align: center;
+            figure {
+                &#play-button {
+                    margin-bottom: 3rem;
+                    img {
+                        max-width: 60%;
+                    }
+                }
+            }
+        }        
+    }
+    &#cununie {
+      background-image: url("../images/banner-3.jpg");
+      h2 {
+        color: $theme-grey;
+      }
+        @include for-tablet-landscape-down {
+            background-image: url("../images/fundal-cununie-mobile.png");
+            padding: 350px 15px 20px;
+            h2 {
+                padding-left: 0;
+                text-align: center;
+                &::first-line {
+                    text-align: left;
+                }
+            }
+        }
+    }
+    &#interior {
+      background-image: url("../images/banner-4.jpg");
+      h2 {
+        color: $theme-grey;
+      }
+        @include for-tablet-landscape-down {
+            background-image: url("../images/fundal-interior-mobile.png");
+            padding: 350px 0 20px;
+            h2 {
+                padding-left: 0;
+                text-align: center;
+                &::first-line {
+                    text-align: left;
+                }
+            } 
+            .container-lg {
+                padding: 0 15px;
+            }
+        }        
+    }
+    &#exterior {
+      padding: 0;
+        #slider {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+      .col-md-4 {
+        position: relative;
+        padding: 0;
+        &:first-of-type  {figcaption {top: 50%;}}
+        &:nth-of-type(2) {figcaption {top: 30%;}}
+        &:nth-of-type(3) {figcaption {top: 85%;}}
+        img {
+          width: 100%;
+          height: auto;
+        }
+        figcaption {
+          position: absolute;
+          @extend h2;
+          left: 20%;
+        }
+      }    
+    }
+      &#exterior-m {
+          max-width: 100vw;
+          padding-top: 0;
+          padding-bottom: 0;
+          .carousel {
+              width: 100%;
+              .carousel-item {
+                  max-width: 100%;
+                  img {
+                      width: 100%;
+                  }
+              }
+          }
+      }
+    &#oferta {
+      padding-top: 60px;
+      padding-bottom: 60px;
+      text-align: center;
+      section {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+      .clearfix {
+        @include clearfix;
+      }
+      .col-lg-4 {
+        align-self: flex-end;
+        figure {
+          img {
+            max-width: 30%;
+          }
+          figcaption {
+            font-family: "Lora", serif;
+            font-size: 26px;
+            color: $theme-grey;
+            line-height: 2rem;
+            padding-top: 1rem;
+              @include for-tablet-portrait-down {
+                font-size: 22px; 
+              }
+          }
+          p {
+            padding: 0 15px;
+            font-size: 16px;
+              @include for-tablet-portrait-down {
+                  font-size: 14px;
+              }
+          }
+        }
+      }
+        @include for-tablet-portrait-down {
+            padding-bottom: 0;
+        }
+    }
+    &#endline-1, &#endline-2 {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    &#meniu {
+      background-image: url("../images/fundal-jos.jpg");
+      padding-top: 100px;
+      h2 {
+        color: $theme-grey;
+        text-align: center;
+          @include for-tablet-portrait-down  {
+              margin-left: 3em;
+          }
+          @include for-small-phone {
+            padding-left: 0;
+        }           
+      }
+      picture {
+        img {
+          max-width: 100%;
+        }
+      }
+      p {
+        font-size: 16px;
+        padding: 6rem 2rem;
+          @include for-tablet-portrait-down {
+              padding: 1rem 2rem;
+          }
+      }
+        @include for-tablet-portrait-down {
+            padding-bottom: 0;
+        }
+    }
+    &#contact-header {
+      background-image: url("../images/fundal-jos.jpg");
+      .d-flex {
+        flex-direction: column;
+        height: auto;
+      }
+      h2 {
+        color: $theme-grey;
+        text-align: center;
+          @include for-small-phone {
+                padding-left: 0;
+            }           
+      }
+      p {
+        text-align: center;
+        padding: 0 30px;
+      }
+    }
+  }
+}

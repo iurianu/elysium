@@ -1,0 +1,52 @@
+
+#contact-form {
+  .d-flex {
+    .row {
+      width: 100%;
+    }
+  }
+}
+
+.form-group {
+  top: -15rem;
+  label {
+    &[for="checkbox"] {
+      width: calc(100% - 20px);
+      margin-top: -25px;
+      margin-left: 20px;
+        @include for-tablet-portrait-down {
+            text-align: left;
+            font-size: 14px;
+        }
+    }
+  }
+    input {
+        &[type="checkbox"] {
+            @include for-tablet-portrait-down {
+                float: left;
+            }
+        }
+    }
+  .form-control {
+    margin-bottom: 1.2rem;
+    border: 1px inset $theme-light-grey;
+    border-radius: 0;
+    &:not[type="submit"] {
+
+    }
+  }
+  .btn {
+    &.btn-primary {
+      background-color: #60893c;
+      color: #FFF;
+      text-transform: uppercase;
+      width: 80%;
+      margin: 20px 10%;
+      border: 0 solid transparent;
+      border-radius: 0;
+      &:hover, &:focus, &:active {
+        background-color: $theme-light-grey;
+      }
+    }
+  }
+}

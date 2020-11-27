@@ -1,0 +1,11 @@
+preferred_syntax = :scss
+http_path = '/'
+css_dir = 'assets/css'
+sass_dir = 'assets/css/scss'
+images_dir = 'assets/images'
+javascripts_dir = 'assets/js'
+fonts_dir = 'asstes/css/fonts'
+sourcemap = true
+relative_assets = true
+line_comments = false
+output_style = :compressed
